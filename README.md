@@ -27,3 +27,11 @@
 `noise threshold (--noise-thresh)`: what the maximum difference from the local mode brightness can be for a pixel before it is denoised
 
 `character spacing (--character-spacing)`: how many pixels to put between 2 characters in the output image
+
+`scale (--scale | -S)`: what to scale the resulting image by
+
+`scale blend (--scale-blend)`: how to blend pixels when downsampling during scaling
+
+`color (--color)`: colors the resulting image based on the original image
+
+`sample method (--sample-method | -T)`: how to sample the color to use, either average the colors (`avg|average`), take the geometric average of the colors (`geo|geometric`), a random color (`rand`|`random`) or the center pixel (`cent`|`center`)
