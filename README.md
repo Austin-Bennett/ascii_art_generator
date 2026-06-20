@@ -3,12 +3,16 @@
 ```
 -I|--image "path/to/image"
 [-g --group <n>]
-[-b --blend <blend_mode>]
+[-b --blend <blend-mode>]
 [-o --output <"path/to/output_image">]
 [--multiplier <brightness_multiplier>]
 [-D --denoise-iterations <n>]
 [--noise-thresh <n>]
 [--character-spacing <n>]
+[--scale -S <scale>]
+[--scale-blend <blend-mode>]
+[--color]
+[--sample-method -T <method>]
 ```
 
 ## Arguments
