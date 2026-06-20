@@ -179,7 +179,10 @@ struct ProgramArgs {
     color: bool,
 
     #[arg(short='T', long, default_value = "avg")]
-    sample_method: SampleMode
+    sample_method: SampleMode,
+
+    #[arg(long)]
+    quiet: bool,
 }
 
 #[allow(unused)]
@@ -458,7 +461,8 @@ fn main() {
             }
 
             let res = GrayImage::from_raw(w as u32, h as u32, res_buf).unwrap();
-            res.save(output).expect("Failed to save image file");
+            res.save(&output).expect("Failed to save image file");
+            println!("Saved ascii art to {:?}", output)
         } else {
             let mut res_buf = vec![0u8; w * h * 3];
 
@@ -486,15 +490,18 @@ fn main() {
             }
 
             let res = RgbImage::from_raw(w as u32, h as u32, res_buf).unwrap();
-            res.save(output).expect("Failed to save image file");
+            res.save(&output).expect("Failed to save image file");
+
+            println!("Saved ascii art to {:?}", output)
         }
     }
 
-    for y in 0..output_h {
-        for x in 0..output_w {
-            print!("{}", BRIGHT_MAP[output_buf[y * output_w + x] as usize..].chars().next().unwrap())
+    if !args.quiet {
+        for y in 0..output_h {
+            for x in 0..output_w {
+                print!("{}", BRIGHT_MAP[output_buf[y * output_w + x] as usize..].chars().next().unwrap())
+            }
+            println!()
         }
-        println!()
     }
-
 }
